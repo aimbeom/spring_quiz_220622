@@ -17,12 +17,14 @@
 	 	FROM
 	 		`real_estate`
 	 	WHERE
+	 		`type` = '매매'
+	 		AND
 		 	 <![CDATA[
-	        `area` > #{area} 
+	        `area` >= #{area} 
 	        ]]>
         	AND
         	 <![CDATA[
-	       	`price` < #{price}
+	       	`price` <= #{price}
 	        ]]>
  	</select>
  </mapper>
