@@ -3,6 +3,42 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.Quiz.lesson03.dao.RealEstateDAO">
+ 	<select id="selectRealEstateListById" parameterType="int" resultType="com.Quiz.lesson03.model.RealEstate">
+ 		SELECT
+	 		`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+	 	FROM
+	 		`real_estate`
+	 	WHERE
+	 		`id` = #{id}	
+ 	</select>
+ 	
+ 	<select id="selectRealEstateListByRentPrice" parameterType="int" resultType="com.Quiz.lesson03.model.RealEstate">
+ 		SELECT
+	 		`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+	 	FROM
+	 		`real_estate`
+	 	WHERE
+	 	 <![CDATA[
+	 		`rentPrice` < #{rentPrice}
+	 	 ]]>				        	
+ 	</select>
+ 	
  	<select id="selectRealEstate" resultType="com.Quiz.lesson03.model.RealEstate">
 	 	SELECT
 	 		`id`
@@ -25,6 +61,56 @@
         	AND
         	 <![CDATA[
 	       	`price` <= #{price}
-	        ]]>
+	        ]]>		        
  	</select>
+ 	
+ 	<insert id="insertRealEstate" parameterType="com.Quiz.lesson03.model.RealEstate">
+	 	INSERT INTO `real_estate`
+	 	(
+		 	`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`createdAt`
+			,`updatedAt`
+	 	)
+	 	VALUES
+	 	(
+	 		#{realtorId}
+	 		, #{address}
+	 		, #{area}
+	 		, #{type}
+	 		, #{price}
+	 		, NOW()
+	 		, NOW()
+	 	)
+ 	</insert>
+ 	
+ 	<insert id="insertRealEstateAsField" parameterType="com.Quiz.lesson03.model.RealEstate">
+	 	INSERT INTO `real_estate`
+	 	(
+	 	   `realtorId`
+		  	,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+	 	)
+	 	VALUES
+	 	(
+	 	   #{realtorId}	
+	 	   	, #{address}
+	 		, #{area}
+	 		, #{type}
+	 		, #{price}
+	 		, #{rentPrice}
+	 		, NOW()
+	 		, NOW()
+	 	)
+	 	WHERE
+	 		`realtor_id` = #{realtor_id}
+ 	</insert>
  </mapper>
