@@ -60,9 +60,33 @@ public class Lesson03Quiz01RestController {
 	// 수정하기
 	@RequestMapping("/lesson03/quiz02/2")
 	public String quiz02_2(
-		@RequestParam("realtor_id")int realtorId
+		@RequestParam("realtor_id") int realtorId
 		) {
 		int row = realEstateBO.addRealEstateAsField(realtorId,"썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
 		return row > 0 ? row + "행 입력 성공했습니다." : "실패했습니다.";
 	}
+	
+	// http://localhost:8080/lesson03/quiz03/1?id=8&type=전세&price=70000
+	//<update>
+	@RequestMapping("/lesson03/quiz03/1")
+	public String quiz03_1(
+		@RequestParam("id") int id,
+		@RequestParam("type") String type,
+		@RequestParam("price") int price
+		) {
+		realEstateBO.updateRealEstateById(id, type, price);
+		//문제와 다르게 void로 처리
+		return "수정 성공";
+	}
+	
+	// http://localhost:8080/lesson03/quiz04/1?id=3
+	//<delete>
+	@RequestMapping("/lesson03/quiz04/1")
+	public String quiz04_1(
+		@RequestParam("id") int id
+		) {
+		realEstateBO.deleteRealEstateById(id);
+		return "삭제 성공";
+	}
+	
 }

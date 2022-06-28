@@ -37,4 +37,15 @@ public class RealEstateBO {
 	public int addRealEstateAsField(int realtor_id ,String address, int area, String type, double price, int rentPrice) {
 		return realEstateDAO.insertRealEstateAsField(realtor_id, address, area, type, price, rentPrice);
 	}
+	
+	//3-1
+	// type은 void도 상관없음
+	public void updateRealEstateById(int id, String type, int price) {
+		 realEstateDAO.updateRealEstateById(id, type, price);
+	}
+	
+	//4-1
+	public void deleteRealEstateById(int id) {
+		realEstateDAO.deleteRealEstateById(id);
+	}
 }
