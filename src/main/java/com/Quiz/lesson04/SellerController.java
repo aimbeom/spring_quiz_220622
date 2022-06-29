@@ -39,13 +39,20 @@ public class SellerController {
 	
 	
 	//quiz01-2
-	// http://localhost:8080/lesson04/quiz01/2/lastSellerView
+	// http://localhost:8080/lesson04/quiz01/2/lastSellerView?id=1
 	@GetMapping("/2/lastSellerView")
-	public String lastSellerView(Model model) {
-		Seller seller = sellerBo.getLastSeller();
-		
+	public String lastSellerView(
+			Model model,
+			@RequestParam(value = "id", required=false) Integer id
+			) {
+		Seller seller = null;
+		if(id==null) {
+			seller = sellerBo.getLastSeller();
+			
+		} else {
+			seller = sellerBo.getSellerById(id);
+		}
 		model.addAttribute("result", seller);
-		
 		return "lesson04/seller_info";
 	}
 	

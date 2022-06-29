@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		<h1>판매자 정보</h1>
-		<div><img src="${result.profileImageUrl}"></div>
+		<img src="${result.profileImageUrl}" width="300">
 		<div><h1>${result.nickname}</h1></div>
 		<div><span class="text-warning"><h1>${result.temperature}</h1></span></div>
 	</div>
