@@ -61,6 +61,7 @@ public class Quiz02RestController {
 		return list;
 	}
 	
+//	http://localhost:8080/lesson01/quiz02/2
 	@RequestMapping("/2")
 	public List<Board> quiz02_02(){
 		//브레이크 포인트 활용하기
@@ -87,6 +88,7 @@ public class Quiz02RestController {
 		return list;
 	}
 	
+//	http://localhost:8080/lesson01/quiz02/3
 	@RequestMapping("/3")
 	public ResponseEntity<Board> quiz02_03(){
 		Board board = new Board();

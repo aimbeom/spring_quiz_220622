@@ -8,6 +8,7 @@ public class Seller {
 	private double temperature;
 	private Date createdAt;
 	private Date updatedAt;
+	
 	public String getNickname() {
 		return nickname;
 	}

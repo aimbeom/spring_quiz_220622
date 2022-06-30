@@ -23,4 +23,5 @@ public class SellerBO {
 	public Seller getSellerById(int id) {
 		return sellerdao.selectSellerById(id);
 	}
+	
 }

@@ -27,7 +27,8 @@ public class SellerController {
 
 	// http://localhost:8080/lesson04/quiz01/addSeller
 	@PostMapping("/addSeller")
-	public String addSeller(@RequestParam("nickname") String nickname,
+	public String addSeller(
+			@RequestParam("nickname") String nickname,
 			@RequestParam(value = "profileImageUrl", required = false) String profileImageUrl,
 			@RequestParam("temperature") double temperature) {
 		
@@ -39,6 +40,7 @@ public class SellerController {
 	
 	
 	//quiz01-2
+	// http://localhost:8080/lesson04/quiz01/2/lastSellerView
 	// http://localhost:8080/lesson04/quiz01/2/lastSellerView?id=1
 	@GetMapping("/2/lastSellerView")
 	public String lastSellerView(
