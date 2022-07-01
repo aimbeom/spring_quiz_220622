@@ -11,36 +11,36 @@
 	
 	<hr>
 	
-	<c:set var="첫번째 숫자" value="36"/>
-	<c:set var="두번째 숫자" value="6"/>
+	<c:set var="first_num" value="36"/>
+	<c:set var="second_num" value="6"/>
 	
-	첫번째 숫자 : ${첫번째 숫자}<br>
-	두번째 숫자 : ${두번째 숫자}<br>
+	첫번째 숫자 : ${first_num}<br>
+	두번째 숫자 : ${second_num}<br>
 	
 	<hr>
 	
-	더하기 : ${첫번째 숫자 + 두번째 숫자}<br>
-	빼기 : ${첫번째 숫자 - 두번째 숫자}<br>
-	곱하기 : ${첫번째 숫자 * 두번째 숫자}<br>
-	나누기 : ${첫번째 숫자 / 두번째 숫자}<br>
+	더하기 : ${first_num + second_num}<br>
+	빼기 : ${first_num - second_num}<br>
+	곱하기 : ${first_num * second_num}<br>
+	나누기 : ${first_num / second_num}<br>
 	
 	<hr>
 	
 	<c:out value="<title>core out</title>"/>
 	
 	<hr>
-
-	<c:if test="${첫번째 숫자 + 두번째 숫자/2 >10}">
-		<h1>${첫번째 숫자 + 두번째 숫자/2}</h1>
+	
+	<c:if test="${first_num + second_num/2 >10}">
+		<h1>${first_num + second_num/2}</h1>
 	</c:if>
-	<c:if test="${첫번째 숫자 + 두번째 숫자/2 <10}">
-		<h3>${첫번째 숫자 + 두번째 숫자/2}</h3>
+	<c:if test="${first_num + second_num/2 <10}">
+		<h3>${first_num + second_num/2}</h3>
 	</c:if>
 	
 	<hr>
 	
-	<c:if test="${첫번째 숫자 * 두번째 숫자 > 100}">
-		<c:out value="<script>너무 큰 수 입니다.</script>"/>
+	<c:if test="${first_num * second_num > 100}">
+		<c:out value="<script>alert('너무 큰 수 입니다.')</script> " escapeXml="false"/>
 	</c:if>
 	
 	<hr>
