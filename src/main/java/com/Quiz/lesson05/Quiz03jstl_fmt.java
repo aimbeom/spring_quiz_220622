@@ -13,18 +13,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Quiz03jstl_fmt {
 	
-//	http://localhost:8080/lesson05/quiz03/1
-	@RequestMapping("/lesson05/quiz03/1")
+//	http://localhost:8080/lesson05/quiz03
+	@RequestMapping("/lesson05/quiz03")
 	public String quiz03_1(Model model) {
+		//1)
 		List<Integer> candidates = new ArrayList<>();
 		candidates.add(263001);
 		candidates.add(173942); 
 		candidates.add(563057); 
 		
+		//총 투표 인원 구하기
+		int totalCount = 0;
+		for(Integer candidate : candidates) {
+			totalCount += candidate;
+		}
+		
 		model.addAttribute("candidates", candidates);
+		model.addAttribute("totalCount", totalCount);
 		
-		//return "lesson05/jstl_fmt1";
-		
+		//2)
 		List<Map<String, Object>> cardBills = new ArrayList<>();
 		Date today = new Date();
 		
@@ -52,6 +59,6 @@ public class Quiz03jstl_fmt {
 		model.addAttribute("cardBills", cardBills);
 		model.addAttribute("today", today);
 		
-		return "lesson05/jstl_fmt1";
+		return "lesson05/jstl_fmt";
 	}
 }

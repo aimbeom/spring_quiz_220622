@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>fmt qui01</title>
+<title>fmt quiz01</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -29,7 +29,7 @@
 			<tr>
 				<td>${status.count }</td>
 				<td><fmt:formatNumber value="${candidate }" type="number" /></td>
-				<td><fmt:formatNumber value="${candidate }" type="percent" pattern="##"/></td>
+				<td><fmt:formatNumber value="${candidate / totalCount}" type="percent"/></td>
 			</tr>
 			</c:forEach>
 		</tbody>		
@@ -49,12 +49,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="cardBills" items="${cardBills }" varStatus="status">
+			<c:forEach var="bill" items="${cardBills }" varStatus="status">
 			<tr>
-				<td>${cardBills.store }</td>
-				<td><fmt:formatNumber value="${cardBills }" type="currency" /></td>
-				<td><fmt:formatDate value="${today}" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="pattern1"/>${pattern1 } </td>
-				<td>${cardBills.installment }</td>
+				<td>${bill.store }</td>
+				<td><fmt:formatNumber value="${bill.pay }" type="currency" /></td>
+				<td><fmt:parseDate value="${bill.date}" pattern="yyyy-MM-dd" var="date"/>
+					<fmt:formatDate value="${date }" pattern="yyyy년 M월 d일"/>
+				</td>
+				<td>${bill.installment }</td>
 			</tr>
 			</c:forEach>
 		</tbody>		
