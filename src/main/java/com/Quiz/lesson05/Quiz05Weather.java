@@ -19,30 +19,28 @@ public class Quiz05Weather {
 	@Autowired
 	WeatherBO weatherBO;
 	
-//	http://localhost:8080/lesson05/quiz05
-	@RequestMapping("/lesson05/quiz05")
+//	http://localhost:8080/lesson05/quiz05/1
+//	mainpage
+	@RequestMapping("/lesson05/quiz05/1")
 	public String quiz05(Model model) {
-		List<Weather> weatherList = new ArrayList<Weather>();
-		weatherBO.getWeatherList();
+		List<Weather> weatherList = weatherBO.getWeatherList();
+
 		
 		model.addAttribute("weatherList", weatherList);
 		
-		return "lesson05/weather";
+		return "lesson05/weather1";
 	}
 	
-//	http://localhost:8080/lesson05/quiz05_1
-	@GetMapping("/lesson05/quiz05_1")
+//	http://localhost:8080/lesson05/quiz05/2
+//	insert page
+	@PostMapping("/lesson05/quiz05/2")
 	public String quiz05_1() {
-		
-		
 		
 		return "lesson05/addWeatherView";
 	}
 	
 	@PostMapping("/lesson05/quiz05_addWeather")
 	public String addWeather(Model model) {
-		
-		
 		
 		return "lesson05/addweather";
 	}
