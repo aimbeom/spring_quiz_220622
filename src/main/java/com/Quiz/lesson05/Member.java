@@ -6,6 +6,7 @@ public class Member {
 	private String email;
 	private String nationality;
 	private String introduce;
+	
 	public String getName() {
 		return name;
 	}

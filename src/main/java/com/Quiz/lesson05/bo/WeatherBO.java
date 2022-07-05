@@ -12,6 +12,6 @@ public class WeatherBO {
 	WeatherDAO weatherDAO;
 	
 	public void getWeatherList() {
-		
+		weatherDAO.selectWeatherList();
 	}
 }

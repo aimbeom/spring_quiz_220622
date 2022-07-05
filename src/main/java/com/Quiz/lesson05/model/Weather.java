@@ -6,6 +6,7 @@ public class Weather {
 	
 	private int id;
 	private String date;
+	private String weather;
 	private double temperatures;
 	private double precipitation;
 	private String microDust;
@@ -24,6 +25,12 @@ public class Weather {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public String getWeather() {
+		return weather;
+	}
+	public void setWeather(String weather) {
+		this.weather = weather;
 	}
 	public double getTemperatures() {
 		return temperatures;
@@ -61,4 +68,6 @@ public class Weather {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
 }
