@@ -13,7 +13,7 @@ import com.Quiz.lesson05.bo.WeatherBO;
 import com.Quiz.lesson05.model.Weather;
 
 @Controller
-public class Quiz05Weather {
+public class Quiz05WeatherController {
 	
 	@Autowired
 	WeatherBO weatherBO;

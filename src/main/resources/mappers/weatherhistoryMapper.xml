@@ -32,7 +32,7 @@
 	 	)
 	 	VALUES
 	 	(
-	 		NOW()
+	 		#{date}
 	 		, #{weather}
 	 		, #{temperatures}
 	 		, #{precipitation}
