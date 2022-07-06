@@ -1,4 +1,4 @@
-package com.Quiz.lesson06;
+package com.Quiz.lesson06.model;
 
 import java.util.Date;
 
@@ -9,6 +9,7 @@ public class Favorite {
 	private String url;
 	private Date createdAt;
 	private Date updatedAt;
+	
 	public int getId() {
 		return id;
 	}

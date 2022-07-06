@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,9 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -21,23 +26,26 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>즐겨찾기 목록</h1>
-		<div class="container">
-		<h1>회원 정보 추가</h1>
-
-		<form method="post" action="/lesson06/quiz01/addView">
-			<div class="form-group">
-				<label for="name">제목</label> <input type="text" id="name"
-					class="form-control col-3" placeholder="다음">
-			</div>
-			<div class="form-group">
-				<label for="url">url</label> <input type="text" id="url"
-					class="form-control col-3">
-			</div>
-
-
-			<input type="button" id="addBtn" class="btn btn-success" value="회원가입">
-		</form>
+	<div class="container">
+		<h1>즐겨찾기 목록</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>이름</th>
+					<th>주소</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="favorite" items="${favoriteList}" varStatus="status">
+					<tr>
+						<td>${status.count }</td>
+						<td>${favorite.name }</td>
+						<td>${favorite.url }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

@@ -17,7 +17,7 @@
 			`store`
  	</select>
  	
- 	 <insert id="insertWeatherList" parameterType="map">
+ 	<insert id="insertWeatherList" parameterType="map">
  		INSERT INTO `store`
 	 	(
 		 	`name`

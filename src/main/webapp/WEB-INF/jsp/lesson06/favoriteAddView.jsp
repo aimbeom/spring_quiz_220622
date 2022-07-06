@@ -21,20 +21,19 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>즐겨찾기 목록</h1>
 	<div class="container">
 		<h1>회원 정보 추가</h1>
-
 		<form method="post" action="/lesson06/quiz01/addView">
 			<div class="form-group">
-				<label for="name">제목</label> <input type="text" id="name"
-					class="form-control col-3" placeholder="다음">
+				<label for="name">제목</label>
+				<input type="text" id="name" class="form-control" placeholder="다음">
 			</div>
 			<div class="form-group">
-				<label for="url">url</label> <input type="text" id="url"
-					class="form-control col-3" placeholder="http://daum.net">
+				<label for="url">url</label>
+				<input type="text" id="url" class="form-control" placeholder="http://daum.net">
 			</div>
-			<input type="button" id="addBtn" class="btn btn-success" value="회원가입">
+			
+			<input type="button" id="addBtn" class="btn btn-success form-control" value="추가">
 		</form>
 	</div>
 	
@@ -52,8 +51,8 @@
 			}
 			
 			let url = $('#url').val().trim();
-			if (url == "") {
-				alert("url을 입력해주세요");
+			if (url == "https" || url == "http") {
+				alert("url을 제대로 입력해주세요");
 				return;
 			}
 			
@@ -61,7 +60,7 @@
 			$.ajax({
 				// request
 				type:"POST"		//Request Method
-				, url:"/lesson06/quiz01/addView"	//Action URL
+				, url:"/quiz01/add"	//Action URL
 				, data: {"name": name, "url":url} //key와 value
 				 
 				// response
@@ -75,9 +74,9 @@
 					alert("error" + e);
 				}
 			}); 
+			
 		});
-		
-	})
+	});
 	</script>
 	
 	

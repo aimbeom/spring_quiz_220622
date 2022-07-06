@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-  <mapper namespace="com.Quiz.lesson04.dao.FavoriteDAO">
- 	<insert id="insertSeller" parameterType="map">
+  <mapper namespace="com.Quiz.lesson06.dao.FavoriteDAO">
+ 	<insert id="insertFavorite" parameterType="map">
  		INSERT INTO `favorite`
 	 	(
 		 	`name`
@@ -13,14 +13,16 @@
 	 	)
 	 	VALUES
 	 	(
-	 		#{nickname}
-	 		, #{profileImageUrl}
+	 		#{name}
+	 		, #{url}
 	 		, NOW()
 	 		, NOW()
 	 	)
+	 	WHERE
+	 		`id` = #{id}
  	</insert>
  	
- 	<select id="selectLastSeller" resultType="com.Quiz.lesson04.model.Seller">
+ 	<select id="selectFavorite" resultType="com.Quiz.lesson06.model.Favorite">
  		SELECT
  			 `id`
  			 , `name`
