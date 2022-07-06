@@ -50,7 +50,7 @@ public class Quiz05Weather {
 		//insert
 		weatherBO.addWeatherList(date, weather, temperature, precipitation, microDust, windSpeed);
 		
-		return "lesson05/weather1";
+		return "redirect:/lesson05/quiz05/1";
 	}
 	
 	

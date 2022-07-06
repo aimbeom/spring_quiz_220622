@@ -8,7 +8,27 @@
 <head>
 <meta charset="UTF-8">
 <title>AddPage</title>
-<%--제이 쿼리--%>
+
+
+<%--부트스트랩--%> 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+	
+	<%--제이 쿼리--%>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -41,23 +61,7 @@
    });
 </script>
 
-<%--부트스트랩--%> 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
 	
 <%-- css --%>
 <link rel="stylesheet" type="text/css" href="/css/lesson05/addWeather.css">
@@ -81,16 +85,16 @@
 					<label>날짜<input type="text" id="datepicker" name="date"></label>
 					
 					<label>날씨<select name="weather">
-						<option value="sunny" selected	>맑음</option>
-						<option value="rain">비</option>
-						<option value="partlyCloudy">흐림</option>
-						<option value="cloudy">구름조금</option>	
+						<option value="맑음" selected	>맑음</option>
+						<option value="비">비</option>
+						<option value="흐림">흐림</option>
+						<option value="구름조금">구름조금</option>	
 						</select></label>
 						
 					<label>미세먼지<select name="microDust">
-						  	<option value="good" selected>좋음</option>										
-						  	<option value="normal" selected>보통</option>										
-						  	<option value="bad" selected>나쁨</option>
+						  	<option value="좋음" selected>좋음</option>										
+						  	<option value="보통" selected>보통</option>										
+						  	<option value="나쁨" selected>나쁨</option>
 						  </select></label>										
 				</div>
 				<div class="input-group d-flex justify-content-between">
