@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Main Page</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <link rel="stylesheet"
@@ -36,8 +36,8 @@
 			<nav>
 				<img class="text-align-center" id="logo" src="https://cdn.imweb.me/upload/S2022041808592a25349f5/2d281f46f2dd2.png">
 				<ul>
-					<li><a>날씨</a></li>
-					<li>날씨입력</li>
+					<li>날씨</li>
+					<li><a href="/lesson05/quiz05/2">날씨입력</a></li>
 					<li>테마날씨</li>
 					<li>관측기후</li>
 				</ul>

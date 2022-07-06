@@ -3,7 +3,7 @@ package com.Quiz.lesson05.model;
 import java.util.Date;
 
 public class Weather {
-	
+
 	private int id;
 	private String date;
 	private String weather;

@@ -12,6 +12,12 @@
 
 #bottom {color:gray; font-size: samll;}
 
+#save {background-color:#009900; color:white;}
+
+button a{color:white}
+
+span{background-color:gray;}
+
 .contents {width:1200px; height:1000px;}
 
 nav li:hover { color:black; }
@@ -20,9 +26,7 @@ nav li{margin-right:5px; padding: 0px 20px; line-height:35px; }
 
 ul {list-style:none;}
 
-li {color:white}
-
-li a{color:white}
+li {color:white; font-weight:bold;}
 
 section {margin-left:50px;}
 
