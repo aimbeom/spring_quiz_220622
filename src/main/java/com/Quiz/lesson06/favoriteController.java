@@ -41,7 +41,6 @@ public class favoriteController {
 			@RequestParam String name,
 			@RequestParam String url
 			) {
-		
 		//insert db
 		favoriteBO.addFavorite(id, name, url);
 		

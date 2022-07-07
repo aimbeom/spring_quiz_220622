@@ -65,7 +65,7 @@
 				 
 				// response
 				, success: function(data){
-					alert(data);
+					
 				}
 				, complete: function(data) {
 					alert("완료");
