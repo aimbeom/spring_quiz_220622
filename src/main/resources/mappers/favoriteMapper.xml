@@ -18,11 +18,9 @@
 	 		, NOW()
 	 		, NOW()
 	 	)
-	 	WHERE
-	 		`id` = #{id}
  	</insert>
  	
- 	<select id="selectFavorite" resultType="com.Quiz.lesson06.model.Favorite">
+ 	<select id="selectFavoriteList" resultType="com.Quiz.lesson06.model.Favorite">
  		SELECT
  			 `id`
  			 , `name`
@@ -33,4 +31,12 @@
 			`favorite`
  	</select>
  	
+ 	<select id="existFavoriteListByUrl" parameterType="String" resultType="boolean">
+ 		SELECT
+ 			COUNT(*)
+		FROM
+			`favorite`
+		WHRER
+			`url` = #{url}	
+ 	</select>
  </mapper>	

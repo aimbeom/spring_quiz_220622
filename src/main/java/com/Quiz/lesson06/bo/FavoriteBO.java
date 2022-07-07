@@ -10,17 +10,19 @@ import com.Quiz.lesson06.model.Favorite;
 
 @Service
 public class FavoriteBO {
-	
 	@Autowired
 	private FavoriteDAO favoriteDAO;
-	
-	public List<Favorite> getFavorite(){
-		
-		return favoriteDAO.selectFavorite();
+
+	public void addFavorite(String name, String url) {
+		favoriteDAO.insertFavorite(name, url);
 	}
 	
-	public void addFavorite(int id, String name, String url) {
+	public List<Favorite> getFavoriteList() {
+		return favoriteDAO.selectFavoriteList();
+	}
+	
+	public boolean existFavoriteListByUrl(String url) {
 		
-		favoriteDAO.insertFavorite(id, name, url);
+		return favoriteDAO.existFavoriteListByUrl(url);
 	}
 }
