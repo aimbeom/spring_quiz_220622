@@ -32,6 +32,7 @@ public class FavoriteController {
 	// AJAX로 들어온 요청은 반드시 @ResponseBody가 붙어있어야 하고, String을 리턴해야 한다.
 	// 즐겨찾기 데이터 추가 - AJAX로 들어오는 요청
 	// {"name":"신보람"} => JSON String
+	// api를 나타내기에 jsp화면이 아님 그래서 view는 붙이지 않는다.
 	@ResponseBody
 	@PostMapping("/add_favorite")
 	public Map<String, Object> addFavorite(
@@ -51,17 +52,24 @@ public class FavoriteController {
 		return result;
 	}
 	
+	// 중복체크 메서드
+	// url 중복확인 - ajax로 온 요청
 	@ResponseBody
 	@PostMapping("/is_duplication")
-	public Map<String, Boolean> isDuplication(
+	public Map<String, Boolean> isDuplicationUrl(
 			@RequestParam("url") String url
 			){
-		boolean isDuplication = favoriteBO.existFavoriteListByUrl(url);
-		// select db
 		
+		//결과를 map -> JSON String
 		Map<String, Boolean> result = new HashMap<String, Boolean>();
-		result.put("is_duplication", isDuplication);
+		result.put("is_duplication", false);
 		
+		// select db
+		Favorite favorite = favoriteBO.getFavoriteByUrl(url);
+		if(favorite != null) {
+			// 중복일 때
+			result.put("is_duplication", true);
+		}
 		return result;
 	}
 	
@@ -74,5 +82,11 @@ public class FavoriteController {
 		model.addAttribute("favoriteList", favoriteList);
 		return "lesson06/favoriteListView";
 	}
+	
+//	@ResponseBody
+//	@PostMapping("/favorite_list_delete")
+//	public Map<String, Boolean> isDeleted(){
+//		
+//	}
 	
 }

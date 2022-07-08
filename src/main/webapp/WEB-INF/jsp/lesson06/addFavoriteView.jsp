@@ -36,13 +36,15 @@
 			<input type="text" class="form-control" id="url" placeholder="http://daum.net">
 			<button type="button" class="btn btn-info" id="chkBtn">중복확인</button>
 			</div>
+			<small id="warningMessage" class="text-danger d-none">중복된 url 입니다</small>
+			<small id="availableUrlText" class="text-success d-none">저장 가능한 url 입니다</small>
 		</div>
-		<small id="warningMessage"></small>
 		<button type="button" id="addBtn" class="btn btn-success btn-block">추가</button>
 	</div>
 	
 <script>
 $(document).ready(function() {
+	
 	$('#addBtn').on('click', function(e) {
 		let name = $('#name').val().trim();
 		let url = $('#url').val().trim();
@@ -61,6 +63,14 @@ $(document).ready(function() {
 		// http 도 아니고(그리고) https도 아닐 때 => alert
 		if (url.startsWith("http") == false && url.startsWith("https") == false) {
 			alert("주소 형식이 잘못되었습니다.");
+			return;
+		}
+		
+		// url 중복확인 체크
+		// '저장 가능한 url입니다.' 문구가 숨겨져 있을 때 alert을 띄운다
+		// d-none이 있을 때
+		if($('#availableUrlText').hasClass('d-none')) {
+			alert("url 중복확인을 다시 해주세요");
 			return;
 		}
 		
@@ -84,22 +94,36 @@ $(document).ready(function() {
 			}	
 		});
 	});
-				
+	
+	// url 중복확인
 	$('#chkBtn').on('click', function(e){
-		$('warningMessage').empty();
+		let url = $('#url').val().trim();
+		if(url==''){
+			alert("url을 입력하세요.");
+			return;
+		}
+		
 		// ajax selet-중복체크
 		$.ajax({
 			
 			//request
 			type : "POST"
-			, url : "/lesson06/is_duplication"
+			, url : "/lesson06/is_duplication" // upi를 요청하는 것이기에 view는 붙이지 않는다
 			, data : {"url":url}
 			
 			//response
-			, success : function(data){
+			, success : function(data){	//json인 경우 object로 내려온것을 string으로 자동변환 해준다
 				if(data.is_duplication){
-					$('#warningMessage').append('<span class="text-danger">중복된 url 입니다</span>');
-				}
+					//중복일 때
+					//1. 강사님 코드 (강사님 코드는 어제 예제와 다른 방식으로 원래 숨겨져있던 글자를 나타내는 방식)
+					$('#warningMessage').removeClass('d-none');
+					$('#availableUrlText').addClass('d-none');
+					//$('#warningMessage').append('<span class="text-danger">중복된 url 입니다</span>');
+				} else{
+					//사용가능
+					$('#availableUrlText').removeClass('d-none');
+					$('#warningMessage').addClass('d-none');
+				}	
 			}
 			, error : function(e, a){
 				alert("중복확인 실패");

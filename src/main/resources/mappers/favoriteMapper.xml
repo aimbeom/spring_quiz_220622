@@ -31,12 +31,17 @@
 			`favorite`
  	</select>
  	
- 	<select id="existFavoriteListByUrl" parameterType="String" resultType="boolean">
+ 	<select id="getFavoriteByUrl" parameterType="String" resultType="boolean">
  		SELECT
- 			COUNT(*)
+			`id`
+			,`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
 		FROM
 			`favorite`
-		WHRER
+		WHERE
 			`url` = #{url}	
  	</select>
+	 	
  </mapper>	

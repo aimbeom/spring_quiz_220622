@@ -25,15 +25,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="favorite" items="${favoriteList}">
+				<c:forEach var="favorite" items="${favoriteList}" varStatus="stauts">
 				<tr>
 					<td>${favorite.id}</td>
 					<td>${favorite.name}</td>
 					<td>${favorite.url}</td>
+					<td><button type="button" class="deleteBtn btn btn-danger">삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 </body>
+<script>
+$(document).ready(function(){
+	$('.deleteBtn').on('click', function(){
+		
+	});
+	
+});
+</script>
 </html>

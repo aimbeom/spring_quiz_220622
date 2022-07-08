@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class Quiz01Controller {
+public class Quiz01Controller1 {
 	
 	
 //	http://localhost:8080/lesson01/quiz01/1
