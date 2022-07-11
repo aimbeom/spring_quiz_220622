@@ -24,5 +24,30 @@
 			`booking`
 		WHERE
 			`id` = #{id}
-	</delete> 	
+	</delete>
+	
+ 	<insert id="insertBookList" parameterType="map">
+ 		INSERT INTO `booking`
+	 	(
+		 	`name`
+			, `headcount`
+			, `day`
+			, `date`
+			, `phoneNumber`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+	 	)
+	 	VALUES
+	 	(
+	 		#{name}
+	 		, #{headcount}
+	 		, #{day}
+	 		, #{date}
+	 		, #{phoneNumber}
+	 		, #{state}
+	 		, NOW()
+	 		, NOW()
+	 	)
+ 	</insert>
  </mapper>

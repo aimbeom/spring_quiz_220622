@@ -70,7 +70,7 @@
 								<td>
 									<c:choose>
 										<c:when test="${book.state == '대기중'}">
-										<span class="text-info;">${book.state}</span>
+										<span class="text-info">${book.state}</span>
 										</c:when>
 										<c:otherwise>
 										<span class="text-danger">${book.state}</span>

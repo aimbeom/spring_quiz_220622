@@ -1,5 +1,6 @@
 package com.Quiz.lesson06;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +8,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +41,6 @@ public class BookingController {
 			@RequestParam("id") int id
 			){
 		
-		// db
 		int deleteRow = bookingBO.deleteBookingListById(id);
 	    
 	    Map<String, Object> map = new HashMap<>();
@@ -65,6 +64,25 @@ public class BookingController {
 	public String bookingPage() {
 		
 		return "lesson06/bookingPage";
+	}
+	
+	@ResponseBody
+	@PostMapping("/add_book_list")
+	public Map<String, Object> addlist(
+			@RequestParam("name") String name,
+			@RequestParam("date") Date date,
+			@RequestParam("day") String day,
+			@RequestParam("headcount") String headcount,
+			@RequestParam(value="phoneNumber", required = false) String phoneNumber
+			){
+		
+		bookingBO.addBookList(name, date, day, headcount, phoneNumber);
+		
+		// db insert
+		Map<String, Object> result = new HashMap<>();
+		result.put("result", "success");
+		
+		return result;
 	}
 	
 	

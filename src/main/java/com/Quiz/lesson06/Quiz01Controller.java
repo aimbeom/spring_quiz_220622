@@ -11,13 +11,13 @@ public class Quiz01Controller {
 	@RequestMapping("/quiz01/listView")
 	public String quiz01() {
 		
-		return "lesson06/favoriteList";
+		return "lesson06/favoriteListView";
 	}
 	
 	@PostMapping("/quiz01/addView")
 	public String quiz01_1() {
 		
-		return "lesson06/favoriteAddView";
+		return "lesson06/addfavoriteView";
 	}
 	
 	
