@@ -88,6 +88,8 @@ public class FavoriteController {
 //	public Map<String, Boolean> isDeleted(){
 //		
 //	}
+	
+	
 	// 삭제
 	// AJAX 요청 - @ResponseBody return Map
 	@ResponseBody
