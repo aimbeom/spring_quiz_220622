@@ -106,7 +106,8 @@ $(document).ready(function() {
 			type: "post"
 			, url: "/lesson06/is_check_book"
 			, data: {"name":name, "phoneNumber":phoneNumber}
-		
+			
+			//test
 			//response
 			, success: function(data){
 				if(data.booking != null){
