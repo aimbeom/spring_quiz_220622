@@ -35,4 +35,10 @@ public class BookingBO {
 		
 		bookingDAO.insertBookList(name, date, day, headcount, phoneNumber);
 	}
+	
+	public Booking getDuplication(String name, String phoneNumber) {
+		
+		
+		return bookingDAO.selectDuplication(name, phoneNumber);
+	}
 }

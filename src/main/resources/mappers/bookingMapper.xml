@@ -50,4 +50,22 @@
 	 		, NOW()
 	 	)
  	</insert>
+ 	<select id="selectDuplication" resultType="com.Quiz.lesson06.model.Booking">
+	 	SELECT 
+			`id`
+			, `name`
+			, `headcount`
+			, `day`
+			, `date`
+			, `phoneNumber`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`booking`
+		WHERE
+			`name` = #{name}	
+			`phoneNumber` = #{phoneNumber}	
+ 	</select>
+ 	
  </mapper>

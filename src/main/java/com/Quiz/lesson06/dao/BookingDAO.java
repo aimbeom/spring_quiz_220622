@@ -22,4 +22,8 @@ public interface BookingDAO {
 			@Param("headcount") String headcount,
 			@Param("phoneNumber") String phoneNumber
 			);
+	
+	public Booking selectDuplication(
+			@Param("name") String name,
+			@Param("phoneNumber") String phoneNumber);
 }

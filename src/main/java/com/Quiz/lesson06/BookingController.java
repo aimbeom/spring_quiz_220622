@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.Quiz.lesson06.bo.BookingBO;
 import com.Quiz.lesson06.model.Booking;
+import com.Quiz.lesson06.model.Favorite;
 
 @RequestMapping("/lesson06")
 @Controller
@@ -66,6 +67,13 @@ public class BookingController {
 		return "lesson06/bookingPage";
 	}
 	
+//	http://localhost:8080/lesson06/book_check_page
+	@GetMapping("/book_check_page")
+	public String bookCheckPage() {
+		
+		return "lesson06/bookCheck";
+	}
+	
 	@ResponseBody
 	@PostMapping("/add_book_list")
 	public Map<String, Object> addlist(
@@ -84,6 +92,30 @@ public class BookingController {
 		
 		return result;
 	}
+	
+	@ResponseBody
+	@PostMapping("/is_duplication_book")
+	public Map<String, Boolean> isDuplicationUrl(
+			@RequestParam("name") String name,
+			@RequestParam(value="phoneNumber", required = false) String phoneNumber
+			){
+		
+		//결과를 map -> JSON String
+		Map<String, Boolean> result = new HashMap<String, Boolean>();
+		result.put("is_duplication", false);
+		
+		// select db
+		Booking booking = bookingBO.getDuplication(name, phoneNumber);
+		
+		if(booking != null) {
+			// 중복일 때
+			result.put("is_duplication", true);
+		}
+		return result;
+	}
+		
+		
+//	}
 	
 	
 	

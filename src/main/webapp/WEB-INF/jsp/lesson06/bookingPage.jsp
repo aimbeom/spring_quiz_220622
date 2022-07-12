@@ -78,7 +78,7 @@
 					class="nav-link text-white font-color-white"> 객실보기</a></li>
 				<li class="nav-item"><a href="/lesson06/booking_page"
 					class="nav-link text-white font-color-white"> 예약하기</a></li>
-				<li class="nav-item"><a href="/lesson06//booking_list"
+				<li class="nav-item"><a href="/lesson06/booking_list"
 					class="nav-link text-white font-color-white"> 예약목록</a></li>
 			</ul>
 		</nav>
@@ -86,25 +86,25 @@
 			<center>
 				<h3>예약하기</h3>
 			</center>
-			<div class="container">
+			<div class="input-box container col-4">
 				<div class="form-group">
 					<label for="office">이름</label><br><input type="text"
-						id="name">
+						class="form-control" id="name">
 				</div>
 				<div class="form-group">
 					<label for="date">예약날짜</label><br> <input type="text"
-						id="datepicker">
+						class="form-control" id="datepicker">
 				</div>
 				<div class="form-group">
-					<label for="day">숙박일수</label><br> <input type="text" id="day">
+					<label for="day">숙박일수</label><br> <input type="text" class="form-control" id="day">
 				</div>
 				<div class="form-group">
 					<label for="headcount">숙박인원</label><br> <input type="text"
-						id="headcount">
+						class="form-control" id="headcount">
 				</div>
 				<div class="form-group">
 					<label for="phoneNumber">전화번호</label><br> <input type="text"
-						id="phoneNumber">
+						class="form-control" id="phoneNumber">
 				</div>
 				<button type="button" class="book-btn btn btn-warning">예약하기</button>
 			</div>
@@ -119,20 +119,19 @@
 			</div>
 		</footer>
 	</div>
-	
 <script>
 $(document).ready(function(){
 	
-	//예약확인 버튼
+	//예약하기 버튼
 	$('.book-btn').on('click', function(e) {
-		alert("제목을 입력하세요");
+		alert("test");
 		let name = $('#name').val().trim();
 		let datepicker = $('#datepicker').val().trim();
 		let day = $('#day').val().trim();
 		let headcount = $('#headcount').val().trim();
 		let phoneNumber = $('#phoneNumber').val().trim();
 		
-		//validation
+ 		//validation
 		if (name.length < 1 && name = "") {
 			alert("제목을 입력하세요");
 			return;
@@ -172,7 +171,7 @@ $(document).ready(function(){
 				alert("e:" + e);
 			}
 		});
-	});	
+	});
 });
 </script>
 </body>
