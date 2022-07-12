@@ -128,9 +128,9 @@ $(document).ready(function() {
 		
 		$.ajax({
 			//request
-			type: "DELETE"
-			, url: "/lesson06/quiz03/delete_booking"
-			, data: {"id":bookingId}
+			type: "post"
+			, url: "/lesson06/del_list"
+			, data: {"id":bookId}
 			
 			//response
 			, success: function(data){

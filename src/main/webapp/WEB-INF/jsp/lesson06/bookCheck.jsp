@@ -88,16 +88,15 @@ $(document).ready(function() {
 	
 	//조회하기 버튼
 	$('.duplication-btn').on('click', function(){
-		alert("test");
 		let name = $('#name').val().trim();
 		let phoneNumber = $('#phoneNumber').val().trim();
 		
 		//validation
-		if(name == "" && name.length < 1){
+		if(name.length < 1){
 			alert("이름을 입력해주세요");
 		}
 		
-		if(phoneNumber == "" && phoneNumber.length < 1){
+		if(phoneNumber == ""){
 			alert("전화번호를 입력해주세요");
 		}
 		
@@ -105,19 +104,23 @@ $(document).ready(function() {
 		$.ajax({
 			//request
 			type: "post"
-			, url: "lesson06/is_duplication_book"
+			, url: "/lesson06/is_check_book"
 			, data: {"name":name, "phoneNumber":phoneNumber}
 		
 			//response
 			, success: function(data){
-				if(data.is_duplication == "true"){
-					alert("이름 : " + name);
+				if(data.booking != null){
+					alert("이름: " + data.booking.name + "\n"+
+					"날짜: " + data.booking.date.substring(0,10) + "\n" +
+					"일수: " + data.booking.day + "\n" + 	
+					"인원: " + data.booking.headcount + "\n"	+
+					"상태: " + data.booking.state	
+					);
 				}
 			}
 			, error: function(e){
 				alert("e:" + e);
 			}
-			
 		});
 		
 	});

@@ -36,6 +36,24 @@ public class BookingController {
 		return "lesson06/bookingListPage";
 	}
 	
+	//예약 페이지
+//	http://localhost:8080/lesson06/booking_page
+	@GetMapping("/booking_page")
+	public String bookingPage() {
+		
+		return "lesson06/bookingPage";
+	}
+	
+	//예약조회 페이지
+//	http://localhost:8080/lesson06/book_check_page
+	@GetMapping("/book_check_page")
+	public String bookCheckPage() {
+		
+		return "lesson06/bookCheck";
+	}
+	
+	
+	//삭제버튼
 	@ResponseBody
 	@PostMapping("/del_list")
 	public Map<String, Object> delet_List(
@@ -61,26 +79,14 @@ public class BookingController {
 	// GET - 데이터를 가져올 때 OR 주소창을 처음 들어갈 때 주로 사용
 	// PUT - 수정할 때 사용
 	
-	@GetMapping("/booking_page")
-	public String bookingPage() {
-		
-		return "lesson06/bookingPage";
-	}
-	
-//	http://localhost:8080/lesson06/book_check_page
-	@GetMapping("/book_check_page")
-	public String bookCheckPage() {
-		
-		return "lesson06/bookCheck";
-	}
-	
+	//
 	@ResponseBody
 	@PostMapping("/add_book_list")
 	public Map<String, Object> addlist(
 			@RequestParam("name") String name,
-			@RequestParam("date") Date date,
-			@RequestParam("day") String day,
-			@RequestParam("headcount") String headcount,
+			@RequestParam("date") String date,
+			@RequestParam("day") int day,
+			@RequestParam("headcount") int headcount,
 			@RequestParam(value="phoneNumber", required = false) String phoneNumber
 			){
 		
@@ -93,38 +99,22 @@ public class BookingController {
 		return result;
 	}
 	
+	//예약조회 메서드
+	
 	@ResponseBody
-	@PostMapping("/is_duplication_book")
-	public Map<String, Boolean> isDuplicationUrl(
+	@PostMapping("/is_check_book")
+	public Map<String, Booking> isDuplicationUrl(
 			@RequestParam("name") String name,
 			@RequestParam(value="phoneNumber", required = false) String phoneNumber
 			){
 		
 		//결과를 map -> JSON String
-		Map<String, Boolean> result = new HashMap<String, Boolean>();
-		result.put("is_duplication", false);
+		Map<String, Booking> result = new HashMap<>();
 		
 		// select db
 		Booking booking = bookingBO.getDuplication(name, phoneNumber);
+		result.put("booking", booking);
 		
-		if(booking != null) {
-			// 중복일 때
-			result.put("is_duplication", true);
-		}
 		return result;
 	}
-		
-		
-//	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

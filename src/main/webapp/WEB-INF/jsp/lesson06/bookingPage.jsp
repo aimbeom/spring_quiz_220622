@@ -15,8 +15,9 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -33,32 +34,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script>
-   $(function() {
-       //input을 datepicker로 선언
-       $("#datepicker").datepicker({
-           dateFormat: 'yy-mm-dd' //달력 날짜 형태
-           ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-           ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
-           ,changeYear: true //option값 년 선택 가능
-           ,changeMonth: true //option값  월 선택 가능                
-           ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-           ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
-           ,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
-           ,buttonText: "선택" //버튼 호버 텍스트              
-           ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
-           ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
-           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
-           ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
-           ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
-           ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-           ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
-       });                    
-       
-       //초기값을 오늘 날짜로 설정해줘야 합니다.
-       $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
-   });
-</script>
 <%-- css --%>
 <link rel="stylesheet" type="text/css"
 	href="/css/lesson06/bookingPage.css">
@@ -88,15 +63,16 @@
 			</center>
 			<div class="input-box container col-4">
 				<div class="form-group">
-					<label for="office">이름</label><br><input type="text"
+					<label for="office">이름</label><br> <input type="text"
 						class="form-control" id="name">
 				</div>
 				<div class="form-group">
 					<label for="date">예약날짜</label><br> <input type="text"
-						class="form-control" id="datepicker">
+						class="form-control" id="date">
 				</div>
 				<div class="form-group">
-					<label for="day">숙박일수</label><br> <input type="text" class="form-control" id="day">
+					<label for="day">숙박일수</label><br> <input type="text"
+						class="form-control" id="day">
 				</div>
 				<div class="form-group">
 					<label for="headcount">숙박인원</label><br> <input type="text"
@@ -119,60 +95,83 @@
 			</div>
 		</footer>
 	</div>
-<script>
-$(document).ready(function(){
-	
-	//예약하기 버튼
-	$('.book-btn').on('click', function(e) {
-		alert("test");
-		let name = $('#name').val().trim();
-		let datepicker = $('#datepicker').val().trim();
-		let day = $('#day').val().trim();
-		let headcount = $('#headcount').val().trim();
-		let phoneNumber = $('#phoneNumber').val().trim();
-		
- 		//validation
-		if (name.length < 1 && name = "") {
-			alert("제목을 입력하세요");
-			return;
-		}
-		
-		if(day == ""){
-			alert("기간을 입력해주세요");
-			return;
-		}
-		
-		if(headCount == ""){
-			alert("인원수를 입력해주세요");
-			return;
-		}
-		
-		if(phoneNumber == ""){
-			alert("핸드폰 번호를 입력해주세요");
-			return;
-		}
-		
-		//ajax 통신
-		$.ajax({
-		
-			//request
-			type : "post"
-			, url : "/lesson06/add_book_list"
-			, data : {"name":name, "date":datepicker, "day":day, "headcount":headcount, "phoneNumber":phoneNumber}
-		
-			//response
-			, success : function(data){
-				if(data.result == "success"){
-					alert("입력 성공했습니다.");
-					location.href = "/lesson06/booking_list";
+	<script>
+		$(document).ready(function() {
+			//input을 datepicker로 선언
+			$("#date").datepicker({
+				dateFormat : 'yy-mm-dd' //달력 날짜 형태
+				,
+				minDate : "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+				,
+				maxDate : "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+			});
+
+			//예약하기 버튼
+			$('.book-btn').on('click', function(e) {
+				let name = $('#name').val().trim();
+				let date = $('#date').val().trim();
+				let day = $('#day').val().trim();
+				let headcount = $('#headcount').val().trim();
+				let phoneNumber = $('#phoneNumber').val().trim();
+
+				//validation
+				if (name == "") {
+					alert("이름을 입력하세요");
+					return;
 				}
-			}
-			, error: function(e){
-				alert("e:" + e);
-			}
+
+				if (date == "") {
+					alert("날짜를 입력해주세요");
+					return;
+				}
+
+				if (day == "") {
+					alert("숙박일을 입력해주세요");
+					return;
+				}
+
+				if (isNaN(day)) {
+					alert("숙박일수는 숫자만 입력가능합니다.");
+					return;
+				}
+
+				if (headcount == "") {
+					alert("인원수를 입력해주세요");
+					return;
+				}
+
+				if (phoneNumber == "") {
+					alert("핸드폰 번호를 입력해주세요");
+					return;
+				}
+
+				//ajax 통신
+				$.ajax({
+
+					//request
+					type : "post"
+					,url : "/lesson06/add_book_list"
+					,data : {
+						"name" : name,
+						"date" : date,
+						"day" : day,
+						"headcount" : headcount,
+						"phoneNumber" : phoneNumber
+					}
+
+					//response
+					, success : function(data) {
+						if (data.result == "success") {
+							alert("입력 성공했습니다.");
+							location.href = "/lesson06/booking_list";
+						}
+					}
+					, error : function(e) {
+						alert("e:" + e);
+					}
+				});
+			});
 		});
-	});
-});
-</script>
+	</script>
 </body>
 </html>

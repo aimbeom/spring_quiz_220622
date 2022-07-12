@@ -17,9 +17,9 @@ public interface BookingDAO {
 	
 	public void insertBookList(
 			@Param("name") String name,
-			@Param("date") Date date,
-			@Param("day") String day,
-			@Param("headcount") String headcount,
+			@Param("date") String date,
+			@Param("day") int day,
+			@Param("headcount") int headcount,
 			@Param("phoneNumber") String phoneNumber
 			);
 	

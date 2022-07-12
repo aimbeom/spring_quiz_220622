@@ -15,6 +15,8 @@ public class BookingBO {
 	@Autowired
 	BookingDAO bookingDAO;
 	
+	// 모든 로직은 BO에서 사용한다
+	
 	public List<Booking> getBookingList() {
 		
 		return bookingDAO.selectBookingList();
@@ -27,9 +29,9 @@ public class BookingBO {
 	
 	public void addBookList(
 			String name,
-			Date date,
-			String day,
-			String headcount,
+			String date,
+			int day,
+			int headcount,
 			String phoneNumber
 			) {
 		
@@ -37,7 +39,6 @@ public class BookingBO {
 	}
 	
 	public Booking getDuplication(String name, String phoneNumber) {
-		
 		
 		return bookingDAO.selectDuplication(name, phoneNumber);
 	}
