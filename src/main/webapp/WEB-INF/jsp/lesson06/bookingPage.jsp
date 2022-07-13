@@ -57,10 +57,8 @@
 					class="nav-link text-white font-color-white"> 예약목록</a></li>
 			</ul>
 		</nav>
-		<section>
-			<center>
-				<h3>예약하기</h3>
-			</center>
+		<section class="contents">
+			<h2 class="text-center font-weight-bold m-4">예약 하기</h2>
 			<div class="input-box container col-4">
 				<div class="form-group">
 					<label for="office">이름</label><br> <input type="text"
@@ -87,10 +85,12 @@
 		</section>
 		<footer class="d-flex">
 			<div id="fright" class="text-align-center">
-				<small class="text-secondary"> <span id="bottom">
-						제주특별자치 제주시 애월읍<br> 사업자등록번호:111-22-255222/농어촌민박사업자지정/대표:김통목<br>
+				<small class="text-secondary">
+					<span id="bottom">
+						제주특별자치 제주시 애월읍<br>
+						사업자등록번호:111-22-255222/농어촌민박사업자지정/대표:김통목<br>
 						Copyright 2025 tongnamu All right reserved.
-				</span>
+					</span>
 				</small>
 			</div>
 		</footer>
@@ -100,10 +100,8 @@
 			//input을 datepicker로 선언
 			$("#date").datepicker({
 				dateFormat : 'yy-mm-dd' //달력 날짜 형태
-				,
-				minDate : "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-				,
-				maxDate : "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+				, minDate : "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+				, maxDate : "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
 			});
 
 			//예약하기 버튼
@@ -158,7 +156,7 @@
 						"headcount" : headcount,
 						"phoneNumber" : phoneNumber
 					}
-
+				
 					//response
 					, success : function(data) {
 						if (data.result == "success") {
@@ -169,6 +167,7 @@
 					, error : function(e) {
 						alert("e:" + e);
 					}
+					
 				});
 			});
 		});

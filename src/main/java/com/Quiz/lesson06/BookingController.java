@@ -1,6 +1,5 @@
 package com.Quiz.lesson06;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.Quiz.lesson06.bo.BookingBO;
 import com.Quiz.lesson06.model.Booking;
-import com.Quiz.lesson06.model.Favorite;
 
 @RequestMapping("/lesson06")
 @Controller
@@ -25,6 +23,7 @@ public class BookingController {
 	@Autowired
 	BookingBO bookingBO;
 	
+	//예약 리스트 페이지
 //	http://localhost:8080/lesson06/booking_list
 	@RequestMapping("/booking_list")
 	public String listpage(Model model) {
@@ -66,7 +65,7 @@ public class BookingController {
 		if (deleteRow > 0) {
 			map.put("result", "success");
 		} else {
-			map.put("result", "failure");
+			map.put("result", "fail");
 		}
 		
 		return map;
@@ -79,11 +78,12 @@ public class BookingController {
 	// GET - 데이터를 가져올 때 OR 주소창을 처음 들어갈 때 주로 사용
 	// PUT - 수정할 때 사용
 	
-	//
+	// 예약 추가버튼
 	@ResponseBody
 	@PostMapping("/add_book_list")
 	public Map<String, Object> addlist(
 			@RequestParam("name") String name,
+			//date는 Date 타입이지만 String으로 사용해도 무방
 			@RequestParam("date") String date,
 			@RequestParam("day") int day,
 			@RequestParam("headcount") int headcount,

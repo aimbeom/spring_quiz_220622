@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,13 +32,13 @@
 		<header><h1><center>통나무 펜션</center></h1></header>
 		<nav class="bg-warning">
 			<ul class="nav nav-fill">
-				<li class="nav-item"><a href="#" class="nav-link text-white font-color-white">
+				<li class="nav-item"><a href="#" class="nav-link text-white font-weight-bold">
 				펜션소개</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-white font-color-white">
+				<li class="nav-item"><a href="#" class="nav-link text-white font-weight-bold">
 				객실보기</a></li>
-				<li class="nav-item"><a href="/lesson06/booking_page" class="nav-link text-white font-color-white">
+				<li class="nav-item"><a href="/lesson06/booking_page" class="nav-link text-white font-weight-bold">
 				예약하기</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-white font-color-white">
+				<li class="nav-item"><a href="#" class="nav-link text-white font-weight-bold">
 				예약목록</a></li>
 			</ul>
 		</nav>
@@ -85,7 +85,7 @@
 					</tbody>
 				</table>
 		</section>
-		<footer class="d-flex">
+		<footer>
 			<div id="fright" class="text-align-center">
 				<small class="text-secondary">
 					<span id="bottom">
@@ -97,8 +97,6 @@
 			</div>
 		</footer>
 	</div>
-</body>
-
 <script>
 $(document).ready(function() {
 	$('.del-btn').on('click', function() {
@@ -106,7 +104,7 @@ $(document).ready(function() {
 		let bookId = $(this).data('book-id');
 		//alert(favoriteId);
 		
-		/* $.ajax({
+		$.ajax({
 			// request
 			type:"post"
 			, url:"/lesson06/del_list"
@@ -124,27 +122,10 @@ $(document).ready(function() {
 			, error: function(e) {
 				alert("통신에 실패했습니다.");
 			}
-		}); */
-		
-		$.ajax({
-			//request
-			type: "post"
-			, url: "/lesson06/del_list"
-			, data: {"id":bookId}
-			
-			//response
-			, success: function(data){
-				if(data.result == "success"){
-					alert("삭제 되었습니다");
-					location.reload(true); // 새로고침
-				}
-			}
-			, error: function(e){
-				alert("통신에 실패했습니다");
-			}
-		})
+		});
 	});
 });
 
 </script>
+</body>
 </html>

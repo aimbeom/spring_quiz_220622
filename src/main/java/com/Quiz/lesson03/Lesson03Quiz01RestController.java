@@ -43,6 +43,7 @@ public class Lesson03Quiz01RestController {
 	}
 	
 	// http://localhost:8080/lesson03/quiz02/1
+	// <INSERT>
 	@RequestMapping("/lesson03/quiz02/1")
 	public String quiz02_1(RealEstate re){
 		RealEstate re1 = new RealEstate();
@@ -57,7 +58,7 @@ public class Lesson03Quiz01RestController {
 	}
 	
 	// http://localhost:8080/lesson03/quiz02/2?realtor_id=5
-	// 수정하기
+	// <UPDATE>
 	@RequestMapping("/lesson03/quiz02/2")
 	public String quiz02_2(
 		@RequestParam("realtor_id") int realtorId
@@ -67,7 +68,7 @@ public class Lesson03Quiz01RestController {
 	}
 	
 	// http://localhost:8080/lesson03/quiz03/1?id=8&type=전세&price=70000
-	//<update>
+	//<UPDATE>
 	@RequestMapping("/lesson03/quiz03/1")
 	public String quiz03_1(
 		@RequestParam("id") int id,
@@ -80,7 +81,7 @@ public class Lesson03Quiz01RestController {
 	}
 	
 	// http://localhost:8080/lesson03/quiz04/1?id=3
-	//<delete>
+	//<DELETE>
 	@RequestMapping("/lesson03/quiz04/1")
 	public String quiz04_1(
 		@RequestParam("id") int id
